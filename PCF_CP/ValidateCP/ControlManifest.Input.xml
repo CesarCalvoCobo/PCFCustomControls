@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="CCCControls" constructor="ValidateCP" version="0.0.1" display-name-key="ValidateCP" description-key="Control para validar Cogigo Postal" control-type="standard">
+    <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
+    <property name="CP" display-name-key="CP" description-key="CP to validate" of-type="SingleLine.Text" usage="bound" required="true" />
+
+    <resources>
+      <code path="index.ts" order="1"/>
+       <css path="css/ValidateCP.css" order="1" />
+    </resources>
+  </control>
+</manifest>
