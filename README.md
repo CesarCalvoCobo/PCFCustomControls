@@ -13,5 +13,5 @@ Custom Control permitiendo la validación del DNI español mediante el control. 
 ![Example Postcode/DNI Validator](https://github.com/CesarCalvoCobo/PCFCustomControls/blob/master/validarDNICP.gif)
 
 ## To Install
-Download the CCCControls.zip provided within the Unmanaged_solution folder above, or you can click this [Download Link Here](https://github.com/CesarCalvoCobo/PCFCustomControls/blob/master/Unmanaged_solution/CCCControls.zip). Once downloaded you can install the solution into a Dynamics 365 CE instance.  
-Descargar el fichero que se encuentra en la carpeta Unmanaged_solution [Link de descarga](https://github.com/CesarCalvoCobo/PCFCustomControls/blob/master/Unmanaged_solution/CCCControls.zip) e instalar en la instancia correspondiente de Dynamics 365 CE 
+Download the CCCControls.zip provided within the Unmanaged_solution folder above, or you can click this [Download Link Here](https://github.com/CesarCalvoCobo/PCFCustomControls/raw/master/Unmanaged_solution/CCCControls.zip). Once downloaded you can install the solution into a Dynamics 365 CE instance.  
+Descargar el fichero que se encuentra en la carpeta Unmanaged_solution [Link de descarga](https://github.com/CesarCalvoCobo/PCFCustomControls/raw/master/Unmanaged_solution/CCCControls.zip) e instalar en la instancia correspondiente de Dynamics 365 CE 
