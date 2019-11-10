@@ -126,6 +126,7 @@ export class ValidateCP implements ComponentFramework.StandardControl<IInputs, I
 	 */
 	public destroy(): void
 	{
-		// Add code to cleanup control if necessary
+        // Add code to cleanup control if necessary
+        this.cp_label.removeEventListener("keyup", this.onKeyUp);
 	}
 }
