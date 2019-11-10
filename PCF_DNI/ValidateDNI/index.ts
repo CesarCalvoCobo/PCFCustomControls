@@ -5,13 +5,13 @@ export class ValidateDNI implements ComponentFramework.StandardControl<IInputs, 
 
     // label element created as part of this control
     private dni_label: HTMLInputElement;
-
+    private _notifyOutputChanged: () => void;
     // This element contains all elements of our custom controle
     private _container: HTMLDivElement;
     //set the context
     private _context: ComponentFramework.Context<IInputs>;
 
-
+    private _DNIField: string; 
     private _value: string;
 
 	/**
@@ -44,6 +44,13 @@ export class ValidateDNI implements ComponentFramework.StandardControl<IInputs, 
         this._container.appendChild(this.dni_label);
         container.appendChild(this._container);
 
+        // @ts-ignore
+        this._DNIField = this._context.parameters.DNI.attributes.LogicalName;
+        // @ts-ignore
+        this.dni_label.value = Xrm.Page.getAttribute(this._DNIField).getValue();
+
+        this._notifyOutputChanged = notifyOutputChanged;
+
 	}
 
     private onKeyUp(event: Event): void {
@@ -62,6 +69,7 @@ export class ValidateDNI implements ComponentFramework.StandardControl<IInputs, 
 
 
         }
+        this._notifyOutputChanged();
     }
 
     private validarDNI(value: String):boolean {
@@ -94,17 +102,18 @@ export class ValidateDNI implements ComponentFramework.StandardControl<IInputs, 
 	public updateView(context: ComponentFramework.Context<IInputs>): void
 	{
 		// Add code to update control view
-
-        this._context = context;
-	}
-
+             this._value = this.dni_label.value;
+    }
 	/** 
 	 * It is called by the framework prior to a control receiving new data. 
 	 * @returns an object based on nomenclature defined in manifest, expecting object[s] for property marked as “bound” or “output”
 	 */
 	public getOutputs(): IOutputs
 	{
-		return {};
+		let result: IOutputs = {
+            DNI: this._value
+          };
+          return result;
 	}
 
 	/** 
@@ -113,7 +122,8 @@ export class ValidateDNI implements ComponentFramework.StandardControl<IInputs, 
 	 */
 	public destroy(): void
 	{
-		// Add code to cleanup control if necessary
+        // Add code to cleanup control if necessary
+        this.dni_label.removeEventListener("keyup", this.onKeyUp);
     }
 
 

@@ -4,15 +4,15 @@ export class ValidateCP implements ComponentFramework.StandardControl<IInputs, I
 
     // label element created as part of this control
     private cp_label: HTMLInputElement;
-
+    private _notifyOutputChanged: () => void;
     // This element contains all elements of our custom controle
     private _container: HTMLDivElement;
     //set the context
     private _context: ComponentFramework.Context<IInputs>;
 
     private _value: string;
-
     private _CPField: string; 
+
 
 	/**
 	 * Empty constructor.
@@ -45,12 +45,19 @@ export class ValidateCP implements ComponentFramework.StandardControl<IInputs, I
         this._container = document.createElement("div");
         this._container.appendChild(this.cp_label);
         container.appendChild(this._container);
-        // @ts-ignore 
+          // @ts-ignore 
         this._CPField = this._context.parameters.CP.attributes.LogicalName;
+        this.cp_label.value = Xrm.Page.getAttribute(this._CPField).getValue();
+
+        
+
+        this._notifyOutputChanged = notifyOutputChanged;
+        this._notifyOutputChanged();
 	}
 
     private onKeyUp(event: Event): void {
         this._value = this.cp_label.value;
+        this._notifyOutputChanged();
 
         if (this._value != "") {
 
@@ -70,9 +77,8 @@ export class ValidateCP implements ComponentFramework.StandardControl<IInputs, I
                    
                     
                 }                                
-
-
         }
+       
     }
 
 
@@ -95,9 +101,11 @@ export class ValidateCP implements ComponentFramework.StandardControl<IInputs, I
 	 */
 	public updateView(context: ComponentFramework.Context<IInputs>): void
 	{
-		// Add code to update control view
+        // Add code to update control view
+        this._value=  this.cp_label.value;
+        
 
-        this._context = context;
+         
 	}
 
 	/** 
@@ -106,7 +114,10 @@ export class ValidateCP implements ComponentFramework.StandardControl<IInputs, I
 	 */
 	public getOutputs(): IOutputs
 	{
-		return {};
+        let result: IOutputs = {
+            CP: this._value
+          };
+          return result;
 	}
 
 	/** 

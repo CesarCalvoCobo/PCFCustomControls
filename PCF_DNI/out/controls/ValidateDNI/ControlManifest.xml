@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <manifest>
-  <control namespace="CCCControls" constructor="ValidateDNI" version="0.0.1" display-name-key="ValidateDNI" description-key="Control para validar DNI" control-type="standard">
+  <control namespace="CCCControls" constructor="ValidateDNI" version="0.0.1" display-name-key="ValidateDNI" description-key="Control para validar DNI" control-type="standard" api-version="1.1.0">
     <property name="DNI" display-name-key="DNI" description-key="DNI to validate" of-type="SingleLine.Text" usage="bound" required="true"/>
     <type-group name="fieldtype">
       <type>SingleLine.Text</type>
     </type-group>
     <resources>
       <code path="bundle.js" order="1"/>
-      <css path="ValidateDNI.css" order="1"/>
+      <css path="css/ValidateDNI.css" order="1"/>
     </resources>
+    <built-by name="pac" version="0.4.3"/>
   </control>
 </manifest>

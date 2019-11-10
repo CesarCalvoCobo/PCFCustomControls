@@ -1,0 +1,2 @@
+C:\testtest\CCCContriols_githib\PCF_DNI\obj\Debug\PCF_DNI.pcfprojAssemblyReference.cache
+C:\testtest\CCCContriols_githib\PCF_DNI\obj\Debug\PCF_DNI.pcfproj.CoreCompileInputs.cache
